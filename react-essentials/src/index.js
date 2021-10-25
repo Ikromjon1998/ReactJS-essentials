@@ -5,6 +5,8 @@ import App from './App';
 // import { buildQueries } from '@testing-library/dom';
 // import reportWebVitals from './reportWebVitals';
 
+const checkList = ["boots", "tent", "headlamp"];
+console.log(checkList);
 
 ReactDOM.render(
   <App authorized={true} />,
