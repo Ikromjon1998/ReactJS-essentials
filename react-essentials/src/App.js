@@ -3,21 +3,19 @@ import './App.css';
 //import restaurant from './restaurant.jpeg'
 import React, { useEffect, useReducer, useState } from 'react';
 
+// https://api.github.com/users/Ikromjon1998
 
 
+function App({login}) {
+  const [data, setData] = useState(null);
 
-function App() {
-  const [checked, toggle] = useReducer(
-    (checked) =>  !checked,false
-  );
-
-  return <>
-    <input 
-      type="checkbox" 
-      value={checked} 
-      onChange={toggle} />
-    <h1>This is {checked ? "checked" : "not checked"}.</h1>
-  </>
+  useEffect(() => {
+    fetch("https://api.github.com/users/" + login).then(response => response.json()).then(setData);
+  }, []);
+  if(data) {
+    return <div>{JSON.stringify(data)}</div>
+  }
+  return <div>No User Available</div>
 }
 
 export default App;
